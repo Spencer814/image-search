@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Search</title>
+    <link rel="icon" href="favicon.png">
+
+    <!-- Font Awesome icons for left and right selectors -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+  </head>
+
+  <body data-ng-app="ImageApp" data-ng-controller="ImageCtrl">
+    <header>
+      <h1>{{appName}}</h1>
+    </header>
+
+    <div class="content">
+      <h2>Search Giphy and Flickr for content!</h2>
+
+      <!-- Insert main.html with ng-view -->
+      <div ng-view></div>
+    </div>
+
+    <footer>
+      <h5>All images from <a href="http://giphy.com/">giphy.com</a> and <a href="https://www.flickr.com/">flickr.com</a>.</h5>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+    <script src="scripts/app.js"></script>
+  </body>
+</html>

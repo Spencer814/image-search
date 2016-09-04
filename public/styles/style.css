@@ -1,0 +1,324 @@
+body {
+  background: #f4f5f7;
+  font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+}
+
+header {
+  background: #f7841b;
+  box-shadow: 0 3px 5px #666666;
+  color: #ffffff;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  text-transform: uppercase;
+  top: 0;
+  width: 100%;
+}
+
+h1 {
+  margin: 10px;
+}
+
+.content {
+  color: #0054a0;
+  margin: 0 auto;
+  padding: 3em 0;
+  position: relative;
+  text-align: center;
+}
+
+input {
+  border-radius: 8px;
+  border: 1px solid #bbbbbb;
+  font-family: inherit;
+  height: 2em;
+  outline: 0;
+}
+
+.search-term {
+  padding-left: 8px;
+}
+
+.submit {
+  background: #0054a0;
+  border: 0;
+  box-shadow: none;
+  color: #ffffff;
+  font-weight: 700;
+  outline: 0;
+  padding: 0 1em;
+}
+
+.link-wrap {
+  background: #f7841b;
+  box-shadow: 0 3px 5px #666666;
+  margin: 0 auto;
+  padding: 6px 0;
+  width: 40%;
+}
+
+.link-wrap a {
+  color: #ffffff;
+}
+
+.container {
+  background: #0054a0;
+  box-shadow: 0 3px 5px #666666;
+  height: 425px;
+  margin: 2em auto;
+  position: relative;
+  width: 70%;
+}
+
+.slider {
+  height: 400px;
+}
+
+.slide {
+  height: 90%;
+  max-width: 100%;
+  min-height: 50%;
+}
+
+img {
+  box-shadow: 0 3px 5px #000000;
+  margin-top: 1em;
+}
+
+.arrow {
+  color: #ffffff;
+  cursor: pointer;
+  display: block;
+  height: 71px;
+  margin-top: -35px;
+  outline: none;
+  position: absolute;
+  top: 50%;
+  width: 36px;
+  z-index: 1;
+}
+
+.arrow:hover {
+  opacity: 1;
+}
+
+.arrow.prev {
+  left: 20px;
+  opacity: 0.5;
+  transition: 0.2s linear all;
+}
+
+.arrow.next {
+  opacity: 0.5;
+  right: 20px;
+  transition: 0.2s linear all;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.dots {
+  padding-left: 0;
+}
+
+.dots .dot {
+  display: inline;
+  margin: 0 1em;
+  position: relative;
+}
+
+.dots .dot a {
+  background: #ffffff;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 3px #666666;
+  cursor: pointer;
+  height: 6px;
+  outline: none;
+  overflow: hidden;
+  position: absolute;
+  transition: background-color 0.25s, border-color 0.25s;
+  width: 6px;
+}
+
+.dots .dot a:hover {
+  border-color: #ffffff;
+  box-shadow: 1px 1px 3px #333333;
+}
+
+.dots .dot a.active {
+  border-color: #ffffff;
+  box-shadow: 1px 1px 3px #111111;
+}
+
+a {
+  color: #0054a0;
+  text-decoration: none;
+}
+
+.fa {
+  text-shadow: 1px 1px 3px #666666;
+}
+
+.fa:hover {
+  text-shadow: 1px 1px 3px #333333;
+}
+
+footer {
+  background: #f7841b;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+footer h5 {
+  margin: 8px;
+}
+
+@media (max-width: 1280px) {
+  h1 {
+    margin: 10px;
+  }
+
+  .container {
+    width: 75%;
+    height: 390px;
+  }
+
+  .slide {
+    height: 80%;
+  }
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    margin: 6px;
+  }
+
+  .container {
+    width: 80%;
+    height: 375px;
+  }
+
+  .slide {
+    height: 75%;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    height: 340px;
+  }
+
+  .slide {
+    height: 70%;
+  }
+
+  .link-wrap {
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.4em;
+  }
+
+  .content {
+    padding: 4em 0;
+  }
+
+  .container {
+    height: 260px;
+    margin: 2em auto;
+  }
+
+  .slide {
+    height: 50%;
+    max-width: 90%;
+    min-height: 50%;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  .link-wrap a {
+    font-size: 0.9em;
+  }
+
+  footer h5 {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 1em auto;
+    width: 95%;
+  }
+}
+
+@media (max-width: 320px) {
+  .content {
+    padding: 2em 0;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+
+  .link-wrap {
+    width: 75%;
+  }
+}
+
+@media (max-width: 218px) {
+  h1 {
+    font-size: 1em;
+  }
+
+  h2 {
+    display: none;
+  }
+
+  .container {
+    height: 115px;
+  }
+
+  .content {
+    padding: 3em 0;
+  }
+
+  .slide {
+    height: 10%;
+    min-height: 20%;
+  }
+
+  .dots {
+    display: none;
+  }
+
+  footer {
+    display: none;
+  }
+}
+
+@media (max-width: 158px) {
+  header {
+    display: none;
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  .link-wrap {
+    display: none;
+  }
+}
+

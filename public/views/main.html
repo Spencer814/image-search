@@ -1,0 +1,29 @@
+<!-- Form data for search input -->
+<form ng-submit="submit()">
+	<input type="text" class="search-term" ng-model="searchTerm" required="">
+	<input type="submit" class="submit" value="Search">
+</form>
+
+<!-- Gif slider -->
+<div class="container">
+	<div class="slider">
+
+		<!-- Gif with selector icons -->
+		<a class="arrow prev fa fa-chevron-left" ng-click="nextSlide()"></a>
+		<img class="slide" ng-hide="!isCurrentSlideIndex($index)" ng-repeat="result in results" ng-src="{{result.gif}}">
+		<a class="arrow next fa fa-chevron-right" ng-click="prevSlide()"></a>
+
+		<!-- Dots below gif that denote more gifs returned by search -->
+		<ul class="dots">
+			<li class="dot" ng-repeat="result in results">
+				<a ng-class="{'active':isCurrentSlideIndex($index)}"
+					 ng-click="setCurrentSlideIndex($index);"></a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!-- Link to gif at Giphy.com -->
+<div class="link-wrap">
+	<a ng-href="{{results.url}}" target="_blank" class="slide" ng-hide="!isCurrentSlideIndex($index)" ng-repeat="results in results">{{results.bitly}}</a>
+</div>

@@ -1,0 +1,60 @@
+<!-- Form data for search input -->
+<div>
+	<div>
+		<div>
+			<form ng-submit="submit()">
+				<input type="text" class="search-term" ng-model="searchTerm" id="search-term" name="searchTerm" required="">
+				<button type="submit" class="submit">
+					<i class="fa fa-search"></i>
+					<span>Search</span>
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="media">
+	<!-- Gif slider -->
+	<div class="giphy-container">
+		<div class="slider">
+
+			<!-- Gif with selector icons -->
+			<a class="arrow pre" ng-click="nextSlide()">
+				<i class="fa fa-chevron-left"></i>
+			</a>
+			<img class="slide" ng-hide="!isCurrentSlideIndex($index)" ng-repeat="result in results" ng-src="{{result.gif}}">
+			<a class="arrow next" ng-click="prevSlide()">
+				<i class="fa fa-chevron-right"></i>
+			</a>
+
+			<!-- Dots below gif that denote more gifs returned by search -->
+			<ul class="dots">
+				<li class="dot" ng-repeat="result in results">
+					<a ng-class="{'active':isCurrentSlideIndex($index)}"
+						 ng-click="setCurrentSlideIndex($index);"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Link to gif at Giphy.com -->
+	<div class="giphy-wrap">
+		<a ng-href="{{results.url}}" target="_blank" class="slide" ng-hide="!isCurrentSlideIndex($index)" ng-repeat="results in results">{{results.bitly}}</a>
+	</div>
+
+	<!-- Image slider -->
+	<div class="flickr-container">
+		<div class="flickr" ng-repeat="pictures in pictures | limitTo:quantity">
+
+			<!-- Image with link to Flickr.com -->
+			<a ng-href="https://farm{{pictures.farm}}.staticflickr.com/{{pictures.server}}/{{pictures.id}}_{{pictures.secret}}.jpg" target="_blank">
+				<img ng-src="https://farm{{pictures.farm}}.staticflickr.com/{{pictures.server}}/{{pictures.id}}_{{pictures.secret}}.jpg">
+			</a>
+	
+			<div class="flickr-wrap">
+				<a ng-href="{{image}}" target="_blank">{{image}}</a>
+			</div>
+
+		</div>
+	</div>
+</div>

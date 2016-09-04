@@ -1,0 +1,22 @@
+{
+  "name": "image-search",
+  "version": "1.0.0",
+  "description": "Coding project that uses API's from Giphy and Flickr with Node.js for the backend and AngularJS for the frontend.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Andre Newman <andre.d.newman@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:Spencer814/image-search.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Spencer814/image-search/issues"
+  },
+  "homepage": "https://github.com/Spencer814/image-search#readme",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
