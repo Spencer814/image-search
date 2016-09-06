@@ -19,5 +19,5 @@ app.get('/*', function(req, res) {
 
 // Listen to port 1337 if not set by environment
 app.listen(process.env.PORT || 1337, process.env.IP, function() {
-  console.log('GiphyApp server listening on port 1337');
+  console.log('Image Search server listening on port 1337');
 });

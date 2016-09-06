@@ -1,0 +1,25 @@
+<!-- Image slider -->
+<div class="flickr-container">
+	<div class="flickr slider">
+
+		<!-- Image with link to Flickr.com -->
+		<a class="arrow pre" ng-click="prevImage()">
+			<i class="fa fa-chevron-left"></i>
+		</a>
+		<a ng-href="https://farm{{pictures.farm}}.staticflickr.com/{{pictures.server}}/{{pictures.id}}_{{pictures.secret}}.jpg" target="_blank">
+			<img class="slide flickr-slide" ng-hide="!isCurrentImage($index)" ng-repeat="pictures in pictures" ng-src="https://farm{{pictures.farm}}.staticflickr.com/{{pictures.server}}/{{pictures.id}}_{{pictures.secret}}.jpg">
+		</a>
+		<a class="arrow next" ng-click="nextImage()">
+			<i class="fa fa-chevron-right"></i>
+		</a>
+
+		<div class="wrap flickr-wrap">
+			<a ng-href="{{image}}" target="_blank">{{image}}</a>
+		</div>
+
+	</div>
+</div>
+
+<footer class="flickr-footer">
+  <h5>This product uses the <a href="https://github.com/Giphy/GiphyAPI">Flickr API</a> but is not endorsed or certified by <a href="https://www.flickr.com/">Flickr</a>.</h5>
+</footer>

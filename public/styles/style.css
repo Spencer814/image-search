@@ -1,11 +1,20 @@
 body {
   background: #f4f5f7;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Oxygen,Open Sans,Helvetica,Arial,sans-serif;
   overflow: hidden;
 }
 
+form {
+  margin: 0 0 1em 0;
+}
+
+.media {
+  height: 800px;
+  overflow: scroll;
+}
+
 header {
-  background: #f7841b;
+  background: #014876;
   box-shadow: 0 3px 5px #666666;
   color: #ffffff;
   left: 0;
@@ -21,7 +30,7 @@ h1 {
 }
 
 .content {
-  color: #0054a0;
+  color: #014876;
   margin: 0 auto;
   padding: 3em 0;
   position: relative;
@@ -29,7 +38,6 @@ h1 {
 }
 
 input {
-  border-radius: 8px;
   border: 1px solid #bbbbbb;
   font-family: inherit;
   height: 2em;
@@ -37,60 +45,86 @@ input {
 }
 
 .search-term {
-  padding-left: 8px;
+  padding-left: 1em;
+  font-size: 1em;
 }
 
 .submit {
-  background: #0054a0;
+  background: #ec7200;
   border: 0;
   box-shadow: none;
   color: #ffffff;
+  font-size: 1em;
   font-weight: 700;
   outline: 0;
-  padding: 0 1em;
+  padding: 8px;
 }
 
-.link-wrap {
-  background: #f7841b;
-  box-shadow: 0 3px 5px #666666;
-  margin: 0 auto;
+.option {
+  background: #ec7200;
+  border: 0;
+  box-shadow: none;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: 700;
+  outline: 0;
+  padding: 8px;
+}
+
+.selections {
+  margin-bottom: 1em;
+}
+
+.wrap {
+  background: #ec7200;
+  box-shadow: 0 3px 5px #222222;
+  margin: 8px auto 0;
   padding: 6px 0;
+}
+
+.giphy-wrap {
   width: 40%;
 }
 
-.link-wrap a {
+.flickr-wrap {
+  width: 55%;
+}
+
+.giphy-wrap a,
+.flickr-wrap a {
   color: #ffffff;
 }
 
 .container {
-  background: #0054a0;
+  background: #014876;
   box-shadow: 0 3px 5px #666666;
-  height: 425px;
-  margin: 2em auto;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 3em;
   position: relative;
   width: 70%;
 }
 
 .slider {
   height: 400px;
+  margin: 0 1.2em;
+  padding: 1em 0;
 }
 
 .slide {
-  height: 90%;
+  height: 100%;
   max-width: 100%;
   min-height: 50%;
 }
 
 img {
-  box-shadow: 0 3px 5px #000000;
-  margin-top: 1em;
+  box-shadow: 0 3px 5px #222222;
 }
 
 .arrow {
   color: #ffffff;
   cursor: pointer;
   display: block;
-  height: 71px;
   margin-top: -35px;
   outline: none;
   position: absolute;
@@ -99,20 +133,17 @@ img {
   z-index: 1;
 }
 
-.arrow:hover {
-  opacity: 1;
-}
-
 .arrow.prev {
   left: 20px;
-  opacity: 0.5;
-  transition: 0.2s linear all;
 }
 
 .arrow.next {
-  opacity: 0.5;
   right: 20px;
-  transition: 0.2s linear all;
+}
+
+span {
+  padding-left: 8px;
+  font-weight: 100;
 }
 
 ul {
@@ -121,6 +152,7 @@ ul {
 
 .dots {
   padding-left: 0;
+  margin: 8px auto 0;
 }
 
 .dots .dot {
@@ -131,9 +163,9 @@ ul {
 
 .dots .dot a {
   background: #ffffff;
-  border-radius: 50%;
   border: 1px solid transparent;
-  box-shadow: 1px 1px 3px #666666;
+  border-radius: 50%;
+  box-shadow: 1px 1px 3px #222222;
   cursor: pointer;
   height: 6px;
   outline: none;
@@ -145,29 +177,32 @@ ul {
 
 .dots .dot a:hover {
   border-color: #ffffff;
-  box-shadow: 1px 1px 3px #333333;
+  box-shadow: 1px 1px 3px #111111;
 }
 
 .dots .dot a.active {
   border-color: #ffffff;
-  box-shadow: 1px 1px 3px #111111;
+  box-shadow: 1px 1px 3px #000000;
 }
 
 a {
-  color: #0054a0;
+  color: #ec7200;
   text-decoration: none;
 }
 
-.fa {
-  text-shadow: 1px 1px 3px #666666;
+.fa-chevron-left,
+.fa-chevron-right {
+  text-shadow: 1px 1px 3px #222222;
 }
 
-.fa:hover {
-  text-shadow: 1px 1px 3px #333333;
+.fa-chevron-left:hover,
+.fa-chevron-right:hover {
+  text-shadow: 1px 1px 3px #000000;
 }
 
 footer {
-  background: #f7841b;
+  background: #014876;
+  border-top: 4px solid #1b7aba;
   bottom: 0;
   left: 0;
   position: fixed;
@@ -176,6 +211,7 @@ footer {
 }
 
 footer h5 {
+  color: #ffffff;
   margin: 8px;
 }
 
@@ -190,7 +226,15 @@ footer h5 {
   }
 
   .slide {
-    height: 80%;
+    height: 90%;
+  }
+
+  .flickr-wrap {
+    width: 65%;
+  }
+
+  .flickr-wrap a {
+    font-size: 14px;
   }
 }
 
@@ -205,8 +249,13 @@ footer h5 {
   }
 
   .slide {
-    height: 75%;
+    height: 85%;
   }
+
+  .flickr-wrap {
+    width: 70%;
+  }
+
 }
 
 @media (max-width: 800px) {
@@ -215,11 +264,19 @@ footer h5 {
   }
 
   .slide {
-    height: 70%;
+    height: 80%;
   }
 
-  .link-wrap {
+  .giphy-wrap {
     width: 50%;
+  }
+
+  .flickr-wrap {
+    width: 80%;
+  }
+
+  .flickr-wrap a {
+    font-size: 12px;
   }
 }
 
@@ -229,7 +286,7 @@ footer h5 {
   }
 
   .content {
-    padding: 4em 0;
+    padding: 2em 0;
   }
 
   .container {
@@ -238,7 +295,7 @@ footer h5 {
   }
 
   .slide {
-    height: 50%;
+    height: 60%;
     max-width: 90%;
     min-height: 50%;
   }
@@ -247,12 +304,20 @@ footer h5 {
     font-size: 1.3em;
   }
 
-  .link-wrap a {
-    font-size: 0.9em;
+  .flickr-wrap {
+    width: 95%;
+  }
+
+  .giphy-wrap a {
+    font-size: 14px;
+  }
+
+  .flickr-wrap a {
+    font-size: 11px;
   }
 
   footer h5 {
-    font-size: 0.7em;
+    font-size: 12px;
   }
 }
 
@@ -261,7 +326,34 @@ footer h5 {
     margin: 1em auto;
     width: 95%;
   }
+
+  .flickr-slide {
+    height: 65%;
+  }
+
+  .flickr-wrap {
+    display: none;
+  }
+
+  footer h5 {
+    font-size: 10px;
+  }
 }
+
+@media (max-width: 350px) {
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .giphy-wrap a {
+    font-size: 12px;
+  }
+
+  .flickr-footer h5 {
+    font-size: 9px;
+  }
+}
+
 
 @media (max-width: 320px) {
   .content {
@@ -269,11 +361,32 @@ footer h5 {
   }
 
   h2 {
-    font-size: 1.1em;
+    display: none;
   }
 
-  .link-wrap {
+  form {
+    margin: 1em 0;
+  }
+
+  .submit {
+    display: none;
+  }
+
+  .flickr-slide {
+    height: 65%;
+    min-height: 65%;
+  }
+
+  .giphy-wrap {
     width: 75%;
+  }
+
+  .giphy-wrap a {
+    font-size: 12px;
+  }
+
+  footer h5 {
+    font-size: 9px;
   }
 }
 
@@ -282,24 +395,29 @@ footer h5 {
     font-size: 1em;
   }
 
-  h2 {
-    display: none;
+  form {
+    margin-top: 0;
+  }
+
+  .search-term {
+    width: 85%;
   }
 
   .container {
-    height: 115px;
+    height: 90px;
+    width: 100%
   }
 
   .content {
-    padding: 3em 0;
+    padding: 2.5em 0;
   }
 
   .slide {
     height: 10%;
-    min-height: 20%;
+    min-height: 25%;
   }
 
-  .dots {
+  .wrap {
     display: none;
   }
 
@@ -317,8 +435,8 @@ footer h5 {
     padding: 0;
   }
 
-  .link-wrap {
+  .giphy-wrap,
+  .flickr-wrap {
     display: none;
   }
 }
-
