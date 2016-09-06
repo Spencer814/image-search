@@ -11,7 +11,7 @@
 
     <!-- Font Awesome icons for left and right selectors -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oxygen" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
   </head>
 
@@ -23,8 +23,20 @@
     <div class="content">
       <h2>Search Giphy and Flickr for content!</h2>
 
-      <!-- Insert main.html with ng-view -->
-      <div ng-view></div>
+      <form ng-submit="submit()" id="search-form">
+        <input type="text" class="search-term" ng-model="searchTerm" id="search-term" name="searchTerm" required="">
+        <button type="submit" class="submit">
+          <i class="fa fa-search"></i>
+          <span>Search</span>
+        </button>
+      </form>
+
+      <div class="selections">
+        <a class="option" ng-href="/gif">Gifs</a>
+        <a class="option" ng-href="/image">Images</a>
+      </div>
+
+      <div class="container" ng-view></div>
     </div>
 
     <footer>
