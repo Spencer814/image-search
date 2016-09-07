@@ -43,27 +43,15 @@ app.controller('ImageCtrl', function($scope, $http) {
 
     // Results retrieved from API data
     .success(function(response) {
-      $scope.results = [{
-        'gif': response.data[0].images.original.url,
-        'url': response.data[0].url,
-        'bitly': response.data[0].bitly_url
-      }, {
-        'gif': response.data[1].images.original.url,
-        'url': response.data[1].url,
-        'bitly': response.data[1].bitly_url
-      }, {
-        'gif': response.data[2].images.original.url,
-        'url': response.data[2].url,
-        'bitly': response.data[2].bitly_url
-      }, {
-        'gif': response.data[3].images.original.url,
-        'url': response.data[3].url,
-        'bitly': response.data[3].bitly_url
-      }, {
-        'gif': response.data[4].images.original.url,
-        'url': response.data[4].url,
-        'bitly': response.data[4].bitly_url
-      }];
+
+      // Go through response.data, format the object, and store it into a new array in $scope.results
+      $scope.results = response.data.map(function(value) {
+        return {
+          'gif': value.images.original.url,
+          'url': value.url,
+          'bitly': value.bitly_url
+        }
+      });
     })
 
     // Handles errors and displays status code
@@ -76,25 +64,23 @@ app.controller('ImageCtrl', function($scope, $http) {
   };
 
   $scope.getPhotos = function(){
-    var url = "https://api.flickr.com/services/rest";
+    var url = 'https://api.flickr.com/services/rest';
     var params = {
-      method: "flickr.photos.search",
-      api_key: "03f566bb6d192c19c91ade74612807c4",
+      method: 'flickr.photos.search',
+      api_key: '03f566bb6d192c19c91ade74612807c4',
       tags: $scope.searchTerm,
-      format: "json",
+      format: 'json',
       nojsoncallback: 1
     };
     $http({
-      method: "GET",
+      method: 'GET',
       url: url,
       params: params
     })
     .then(function(response){
       $scope.pictures = response.data.photos.photo,
 
-      $scope.image = "https://farm" + $scope.pictures[0].farm + ".staticflickr.com/" + $scope.pictures[0].server + "/" + $scope.pictures[0].id + "_" + $scope.pictures[0].secret + ".jpg";
-      // console.log($scope.image);
-      // console.log($scope.pictures[0].title);
+      $scope.image = 'https://farm' + $scope.pictures[0].farm + '.staticflickr.com/' + $scope.pictures[0].server + '/' + $scope.pictures[0].id + '_' + $scope.pictures[0].secret + '.jpg';
     },
     function(response){
       alert('error');
