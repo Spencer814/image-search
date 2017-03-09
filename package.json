@@ -17,6 +17,7 @@
   "homepage": "https://github.com/Spencer814/image-search#readme",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.0"
+    "angular": "1.5.8",
+    "express": "^4.15.2"
   }
 }

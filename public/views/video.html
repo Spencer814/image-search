@@ -1,0 +1,26 @@
+<!-- Video slider -->
+<div class="flickr-container">
+	<div class="flickr slider">
+
+		<!-- Video with selector icons -->
+		<a class="arrow pre" ng-click="prevVideo()">
+			<i class="fa fa-chevron-left"></i>
+		</a>
+		<div class="slide embed-responsive embed-responsive-21by9" ng-hide="!isCurrentVideo($index)" ng-repeat="clips in clips">
+			<iframe class="embed-responsive-item" ng-src="{{embed}}"></iframe>
+		</div>
+		<a class="arrow next" ng-click="nextVideo()">
+			<i class="fa fa-chevron-right"></i>
+		</a>
+
+		<!-- Link to video at Youtube.com -->
+		<div class="wrap flickr-wrap">
+			<a ng-href="https://www.youtube.com/watch?v={{id}}" target="_blank" class="slide" ng-hide="!isCurrentVideo($index)" ng-repeat="clips in clips">{{content}}</a>
+		</div>
+
+	</div>
+</div>
+
+<footer>
+  <h5>YouTube <a href="https://www.youtube.com/static?template=terms">Terms of Service</a>.</h5>
+</footer>

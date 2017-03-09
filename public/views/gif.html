@@ -6,7 +6,9 @@
 		<a class="arrow pre" ng-click="prevSlide()">
 			<i class="fa fa-chevron-left"></i>
 		</a>
-		<img class="slide" ng-hide="!isCurrentSlideIndex($index)" ng-repeat="result in results" ng-src="{{result.gif}}">
+		<a ng-href="{{results.url}}" target="_blank">
+			<img class="slide" ng-hide="!isCurrentSlideIndex($index)" ng-repeat="result in results" ng-src="{{result.gif}}">
+		</a>
 		<a class="arrow next" ng-click="nextSlide()">
 			<i class="fa fa-chevron-right"></i>
 		</a>

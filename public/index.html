@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Search</title>
-    
+
     <!-- Removing # from url -->
     <base href="/">
     <link rel="icon" href="favicon.png">
 
     <!-- Font Awesome icons for left and right selectors -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oxygen" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
@@ -21,7 +22,7 @@
     </header>
 
     <div class="content">
-      <h2>Search Giphy and Flickr for content!</h2>
+      <h2>Search {{appSite}} for content!</h2>
 
       <form ng-submit="submit()" id="search-form">
         <input type="text" class="search-term" ng-model="searchTerm" id="search-term" name="searchTerm" required="">
@@ -34,17 +35,20 @@
       <div class="selections">
         <a class="option" ng-href="/gif">Gifs</a>
         <a class="option" ng-href="/image">Images</a>
+        <a class="option" ng-href="/video">Videos</a>
       </div>
 
       <div class="container" ng-view></div>
     </div>
 
-    <footer>
-      <h5>All images from <a href="http://giphy.com/">giphy.com</a> and <a href="https://www.flickr.com/">flickr.com</a>.</h5>
-    </footer>
+    <!-- <footer>
+      <h5>{{appFooter}}</h5>
+    </footer> -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
-    <script src="scripts/app.js"></script>
+    <!-- Migrate to Angular 1.6.2 before rewriting for Angular 2 -->
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
   </body>
 </html>

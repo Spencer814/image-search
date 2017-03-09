@@ -1,4 +1,6 @@
 'use strict';
+/*jshint esversion: 6 */
+/* jshint node: true */
 
 // Require Express module
 var express = require('express');
@@ -13,7 +15,7 @@ app.use("/styles", express.static(__dirname + "/public/styles"));
 app.use("/views", express.static(__dirname + "/public/views"));
 
 // Serve index.html for all remaining routes, in order to leave routing up to Angular
-app.get('/*', function(req, res) { 
+app.get('/*', function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
