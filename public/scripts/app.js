@@ -70,6 +70,7 @@ app.controller('ImageCtrl', function ($scope, $http, $log, $sce) {
           'bitly': value.bitly_url
         };
       });
+      $log.info($scope.results);
     })
 
     // Handles errors and displays status code
@@ -111,12 +112,31 @@ app.controller('ImageCtrl', function ($scope, $http, $log, $sce) {
       params: params
     })
     .then(function (response){
-      $scope.pictures = response.data.photos.photo;
-
-      for (var i = response.data.photos.photo.length - 1; i >= 0; i--) {
-        $scope.image = 'https://farm' + $scope.pictures[i].farm + '.staticflickr.com/' + $scope.pictures[i].server + '/' + $scope.pictures[i].id + '_' + $scope.pictures[i].secret + '.jpg';
-      }
-      $log.info($scope.image);
+      $scope.pictures = response.data.photos.photo.map(function (picture) {
+        var base58 = (function(alpha) {
+          var alphabet = alpha || '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ',
+          base = alphabet.length;
+          return {
+            encode: function(enc) {
+              if(typeof enc!=='number' || enc !== parseInt(enc)) throw '"encode" only accepts integers.';
+              var encoded = '';
+              while(enc) {
+                var remainder = enc % base;
+                enc = Math.floor(enc / base);
+                encoded = alphabet[remainder].toString() + encoded;
+              }
+              return encoded;
+            },
+          };
+        })();
+        return {
+          'image': 'https://farm' + picture.farm + '.staticflickr.com/' + picture.server + '/' + picture.id + '_' + picture.secret + '.jpg',
+          'source': 'https://www.flickr.com/photos/' + picture.owner + '/' + picture.id,
+          'title': picture.title,
+          'url': 'https://flic.kr/p/' + base58.encode(parseInt(picture.id))
+        };
+      });
+      $log.info($scope.pictures);
     },
     function (response){
       $scope.data = response.data || 'Request failed';
@@ -141,31 +161,36 @@ app.controller('ImageCtrl', function ($scope, $http, $log, $sce) {
   };
 
   $scope.getVideos = function () {
-		$http.get('https://www.googleapis.com/youtube/v3/search', {
-			params: {
-				key: 'AIzaSyCSCx9g1gbpd9A8QT8dSi4ZeQu8juacFP8',
-				type: 'video',
-				maxResults: '50',
-				part: 'id,snippet',
-				fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/high,items/snippet/channelTitle',
-				q: $scope.searchTerm
-			}
-		})
-		.success(function (data) {
-      $scope.clips = data;
 
-			for (var i = data.items.length - 1; i >= 0; i--) {
-        $scope.title = $scope.clips.items[i].snippet.title;
-        $scope.id = $scope.clips.items[i].id.videoId;
-        $scope.content = 'https://www.youtube.com/watch?v=' + $scope.id;
-        $scope.embed = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + $scope.id);
-        $scope.img = $scope.clips.items[i].snippet.thumbnails.high.url;
-        // $log.info(VideosService.listResults(data.items));
-        // $log.info($scope.clips.items[i].id.videoId);
-        $log.info($scope.content);
-        $log.info($scope.embed);
-      }
-      $log.info($scope.clips.items);
+    var url = 'https://www.googleapis.com/youtube/v3/search',
+        params = {
+          key: 'AIzaSyCSCx9g1gbpd9A8QT8dSi4ZeQu8juacFP8',
+  				type: 'video',
+          order: 'viewCount',
+  				maxResults: '10',
+  				part: 'id,snippet',
+  				fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/high,items/snippet/channelTitle',
+  				q: $scope.searchTerm
+        };
+
+    $http({
+      method: 'GET',
+      url: url,
+      params: params
+    })
+
+		.success(function (data) {
+      $scope.clips = data.items.map(function (items) {
+        return {
+          'content': 'https://www.youtube.com/watch?v=' + items.id.videoId,
+          'embed': $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + items.id.videoId),
+          'id': items.id.videoId,
+          'img': items.snippet.thumbnails.high.url,
+          'title': items.snippet.title
+        };
+      });
+
+      $log.info($scope.clips);
 		})
 		.error(function (response) {
       $scope.data = response.data || 'Request failed';
@@ -183,10 +208,10 @@ app.controller('ImageCtrl', function ($scope, $http, $log, $sce) {
     return $scope.currentVideo === embed;
   };
   $scope.prevVideo = function () {
-    $scope.currentVideo = ($scope.currentVideo > 0) ? --$scope.currentVideo : $scope.clips.items.length - 1;
+    $scope.currentVideo = ($scope.currentVideo > 0) ? --$scope.currentVideo : $scope.clips.length - 1;
   };
   $scope.nextVideo = function () {
-    $scope.currentVideo = ($scope.currentVideo < $scope.clips.items.length - 1) ? ++$scope.currentVideo : 0;
+    $scope.currentVideo = ($scope.currentVideo < $scope.clips.length - 1) ? ++$scope.currentVideo : 0;
   };
 
   // Runs submit function for default searchTerm when page loads
